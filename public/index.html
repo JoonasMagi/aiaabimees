@@ -13,22 +13,38 @@
         <!-- Taimede nimekiri renderdatakse siia -->
     </div>
     <button class="new-plant-btn">New plant</button>
-</div>
+    </div>
     <div id="new-plant-modal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <h2>Add a New Plant</h2>
-            <form>
-                <label for="plant-name">Plant Name:</label>
-                <input type="text" id="plant-name" name="plant-name" required>
-                <br>
-                <label for="plant-species">Species:</label>
-                <input type="text" id="plant-species" name="plant-species" required>
+            <form id="plant-form">
+                <!-- Taimeliigi valik -->
+                <label for="plant-type">Plant Type:</label>
+                <select id="plant-type" name="plant-type">
+                    <option value="flower">Flower</option>
+                    <option value="vegetable">Vegetable</option>
+                    <option value="tree">Tree</option>
+                    <option value="herb">Herb</option>
+                </select>
                 <br><br>
+
+                <!-- Kirjeldus -->
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4" cols="50"></textarea>
+                <br><br>
+
+                <!-- Pildi lisamine -->
+                <label for="plant-picture">Add Picture:</label>
+                <input type="file" id="plant-picture" name="plant-picture" accept="image/*">
+                <br><br>
+
+                <!-- Esitamise nupp -->
                 <button type="submit" class="submit-button">Add Plant</button>
             </form>
         </div>
     </div>
+
 </main>
 <script>
     async function loadPlants() {
