@@ -12,11 +12,9 @@ Responsive Design: The frontend adapts to different screen sizes.
 
 Backend: Node.js with Express.js
 
-Database: MariaDB (Dockerized for simplicity)
+Database: MariaDB
 
 Frontend: HTML, CSS, and JavaScript
-
-## Installation
 
 ### Prerequisites
 
@@ -33,12 +31,12 @@ npm install
 
 Create a .env file in the root directory with the following variables:
 
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=user
-DB_PASSWORD=password
-DB_NAME=aedniku_abimees
-SERVER_PORT=4000
+DB_HOST=localhost<br>
+DB_PORT=3306<br>
+DB_USER=user<br>
+DB_PASSWORD=password<br>
+DB_NAME=aedniku_abimees<br>
+SERVER_PORT=4000<br>
 
 Initialize the database:
 If you have a dump.sql file with the database schema and initial data, you can initialize the database using the following command:
@@ -59,8 +57,8 @@ http://localhost:4000
 
 ### Usage
 
-Navigate to the /plants page after signing in.
 
+Navigate to the /plants page after signing in.
 View your list of plants, including their names, species, and images.
 
 
