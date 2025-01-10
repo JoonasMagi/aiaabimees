@@ -37,13 +37,13 @@ DB_HOST=localhost
 DB_PORT=3306
 DB_USER=user
 DB_PASSWORD=password
-DB_NAME=`aedniku_abimees`
+DB_NAME=aedniku_abimees
 SERVER_PORT=4000
 
 Initialize the database:
 If you have a dump.sql file with the database schema and initial data, you can initialize the database using the following command:
 
-mysql -u user -p `aedniku_abimees` < dump.sql
+mysql -u user -p aedniku_abimees < dump.sql
 
 Replace dump.sql with the path to your database dump file.
 
