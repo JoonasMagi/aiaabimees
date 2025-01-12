@@ -107,7 +107,7 @@ app.put('/plants/:id', (req, res) => {
         WHERE id = ?
     `;
 
-    db.query(sql, [name, species, type, description, imageUrl, id], (err, result) => {
+    db.query(sql, [name, species, type, description, imageUrl, id], (err) => {
         if (err) {
             console.error('Database error:', err.message);
             return res.status(500).send('Error updating plant');
@@ -126,7 +126,7 @@ app.delete('/plants/:id', (req, res) => {
         WHERE id = ?
     `;
 
-    db.query(sql, [id], (err, result) => {
+    db.query(sql, [id], (err) => {
         if (err) {
             console.error('Database error:', err.message);
             return res.status(500).send('Error deleting plant');
