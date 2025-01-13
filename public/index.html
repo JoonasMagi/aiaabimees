@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Plants</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+    <h1>My Plants</h1>
+    <div class="plant-list" id="plants-list">
+        <!-- Taimede nimekiri renderdatakse siia -->
+    </div>
+    <button class="new-plant-btn">New plant</button>
+</main>
+
+<!-- Modaal uue taime lisamiseks -->
+<div id="new-plant-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Add a New Plant</h2>
+        <form id="plant-form" enctype="multipart/form-data">
+            <label for="name">Plant Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br><br>
+
+            <label for="species">Species:</label>
+            <input type="text" id="species" name="species">
+            <br><br>
+
+            <label for="type">Type:</label>
+            <select id="type" name="type">
+                <option value="flower">Flower</option>
+                <option value="vegetable">Vegetable</option>
+                <option value="tree">Tree</option>
+                <option value="herb">Herb</option>
+            </select>
+            <br><br>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" cols="50"></textarea>
+            <br><br>
+
+            <label for="plant-picture">Add Picture:</label>
+            <input type="file" id="plant-picture" name="plant-picture" accept="image/*">
+            <br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
