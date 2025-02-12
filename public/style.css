@@ -181,55 +181,10 @@ button:disabled {
 
 /* Plants list */
 .plants-list {
-    display: grid;
+    display: list-item;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
     padding: 1.5rem;
-}
-
-.plant-item {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-}
-
-.plant-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.plant-info {
-    padding: 1rem;
-}
-
-.plant-name {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.25rem;
-}
-
-.plant-species {
-    color: #666;
-    margin-bottom: 0.5rem;
-    font-style: italic;
-}
-
-.delete-plant-btn {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: var(--error-color);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding: 0;
-    font-size: 1.25rem;
 }
 
 /* Loading state */
@@ -281,29 +236,37 @@ button:disabled {
     display: none !important;
 }
 .plant-item {
+    display: flex;
+    align-items: center;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.plant-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.plant-image {
-    width: 100%;
-    height: 200px;
+.plant-item img {
+    width: 75px;
+    height: 100px;
+    border-radius: 1%;
     object-fit: cover;
-    pointer-events: none; /* Prevents image from interfering with click */
+    margin-right: 20px;
 }
 
 .plant-info {
-    padding: 1rem;
-    pointer-events: none; /* Prevents text from interfering with click */
+    display: flex;
+    flex-direction: column;
+}
+
+.plant-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+}
+
+.plant-species {
+    font-size: 15px;
+    color: #555;
 }
 
 .delete-plant-btn {

@@ -1,4 +1,3 @@
-
 // Import required modules
 const express = require('express');
 const session = require('express-session');
@@ -23,6 +22,12 @@ const ROOT_DIR = path.join(__dirname, '..');
 
 // Load environment variables
 require('dotenv').config();
+
+// Session secret validation
+if (!process.env.SESSION_SECRET) {
+    console.error('SESSION_SECRET must be set in environment variables');
+    process.exit(1);
+}
 
 // Database connection pool
 const pool = mysql.createPool({
@@ -59,11 +64,11 @@ app.use(express.static(path.join(ROOT_DIR, 'public')));
 
 // Session configuration
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'your-secret-key',
+    secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true, // Changed to true
+    saveUninitialized: true,
     cookie: {
-        secure: process.env.NODE_ENV === 'production', // Only use secure in production
+        secure: process.env.NODE_ENV === 'production',
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000 // 24 hours
     }
@@ -71,13 +76,17 @@ app.use(session({
 
 // File upload configuration
 app.use(fileUpload({
-    limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+    limits: { 
+        fileSize: 10 * 1024 * 1024 // 10MB limit
+    },
     abortOnLimit: true,
     createParentPath: true,
-    responseOnLimit: 'File size exceeded',
+    responseOnLimit: 'File size limit exceeded. Maximum file size is 10MB.',
     safeFileNames: true,
+    preserveExtension: true,
     useTempFiles: true,
-    tempFileDir: path.join(ROOT_DIR, 'tmp')
+    tempFileDir: path.join(ROOT_DIR, 'tmp'),
+    debug: process.env.NODE_ENV === 'development'
 }));
 
 // CSRF Protection Middleware
