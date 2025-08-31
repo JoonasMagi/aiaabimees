@@ -1,0 +1,104 @@
+# Kustutab kõik olemasolevad andmed Redis-ist, ole ettevaatlik!
+FLUSHALL
+
+# Kasutajad
+HSET user:1 username "joonas" password "$2b$10$H0/fwx3mnPLuNLve4k74CO44iZy8MZ8KSJbvWwchgpjqeNVBIi6Xe" email "joonas@example.com" created_at "2024-08-01 10:00:00"
+HSET user:2 username "test" password "$2b$10$p.4iOlmdZ.muJouF0ppY.OPxJU5I23lta4eS5ESIfAqcb/k55Pqx6" email "test@example.com" created_at "2024-08-01 10:05:00"
+HSET user:3 username "mari" password "$2b$10$H0/fwx3mnPLuNLve4k74CO44iZy8MZ8KSJbvWwchgpjqeNVBIi6Xe" email "mari@example.com" created_at "2024-08-01 10:10:00"
+HSET user:4 username "kadi" password "$2b$10$H0/fwx3mnPLuNLve4k74CO44iZy8MZ8KSJbvWwchgpjqeNVBIi6Xe" email "kadi@example.com" created_at "2024-08-01 10:15:00"
+HSET user:5 username "lauri" password "$2b$10$H0/fwx3mnPLuNLve4k74CO44iZy8MZ8KSJbvWwchgpjqeNVBIi6Xe" email "lauri@example.com" created_at "2024-08-01 10:20:00"
+
+# Taimed
+HSET plant:1 plant_cultivar "Roma" plant_species "Solanum lycopersicum" is_deleted "false"
+HSET plant:2 plant_cultivar "Beefsteak" plant_species "Solanum lycopersicum" is_deleted "false"
+HSET plant:3 plant_cultivar "Cherry" plant_species "Solanum lycopersicum" is_deleted "false"
+HSET plant:4 plant_cultivar "Genovese" plant_species "Ocimum basilicum" is_deleted "false"
+HSET plant:5 plant_cultivar "Thai" plant_species "Ocimum basilicum" is_deleted "false"
+HSET plant:6 plant_cultivar "Purple" plant_species "Ocimum basilicum" is_deleted "false"
+HSET plant:7 plant_cultivar "Butterhead" plant_species "Lactuca sativa" is_deleted "false"
+HSET plant:8 plant_cultivar "Romaine" plant_species "Lactuca sativa" is_deleted "false"
+HSET plant:9 plant_cultivar "Iceberg" plant_species "Lactuca sativa" is_deleted "false"
+HSET plant:10 plant_cultivar "Green" plant_species "Capsicum annuum" is_deleted "false"
+
+# Kasutaja taimed
+HSET user_plant:1 user_id 1 plant_id 1 planting_time "2024-03-15" est_cropping 85 photo_url "/uploads/roma_tomato.jpg" is_deleted "false"
+HSET user_plant:2 user_id 1 plant_id 4 planting_time "2024-04-01" est_cropping 45 photo_url "/uploads/genovese_basil.jpg" is_deleted "false"
+HSET user_plant:3 user_id 1 plant_id 7 planting_time "2024-04-10" est_cropping 30 photo_url "/uploads/butterhead_lettuce.jpg" is_deleted "false"
+HSET user_plant:4 user_id 2 plant_id 2 planting_time "2024-03-20" est_cropping 90 photo_url "/uploads/beefsteak_tomato.jpg" is_deleted "false"
+HSET user_plant:5 user_id 2 plant_id 5 planting_time "2024-04-05" est_cropping 50 photo_url "/uploads/thai_basil.jpg" is_deleted "false"
+HSET user_plant:6 user_id 2 plant_id 10 planting_time "2024-04-15" est_cropping 75 photo_url "/uploads/green_pepper.jpg" is_deleted "false"
+HSET user_plant:7 user_id 3 plant_id 3 planting_time "2024-03-25" est_cropping 70 photo_url "/uploads/cherry_tomato.jpg" is_deleted "false"
+HSET user_plant:8 user_id 3 plant_id 6 planting_time "2024-04-08" est_cropping 40 photo_url "/uploads/purple_basil.jpg" is_deleted "false"
+HSET user_plant:9 user_id 3 plant_id 8 planting_time "2024-04-12" est_cropping 35 photo_url "/uploads/romaine_lettuce.jpg" is_deleted "false"
+
+# Ilmaandmed
+HSET weather:1 user_id 1 location "Tallinn" temperature 18.5 humidity 65.2 recorded_at "2024-08-01 08:00:00"
+HSET weather:2 user_id 1 location "Tallinn" temperature 22.3 humidity 58.7 recorded_at "2024-08-01 14:00:00"
+HSET weather:3 user_id 1 location "Tallinn" temperature 19.8 humidity 72.1 recorded_at "2024-08-01 20:00:00"
+HSET weather:4 user_id 2 location "Tartu" temperature 17.2 humidity 68.9 recorded_at "2024-08-01 08:00:00"
+HSET weather:5 user_id 2 location "Tartu" temperature 21.7 humidity 61.3 recorded_at "2024-08-01 14:00:00"
+HSET weather:6 user_id 2 location "Tartu" temperature 18.9 humidity 75.4 recorded_at "2024-08-01 20:00:00"
+HSET weather:7 user_id 3 location "Pärnu" temperature 19.1 humidity 63.8 recorded_at "2024-08-01 08:00:00"
+HSET weather:8 user_id 3 location "Pärnu" temperature 23.4 humidity 55.2 recorded_at "2024-08-01 14:00:00"
+
+# Mullatüübid
+HSET soil:1 soil_type "Savimullad" ph_range "6.0-7.0" description "Toitainerohkad, kuid võivad olla raskesti läbitavad" suitable_plants "Tomat, basiil, paprika"
+HSET soil:2 soil_type "Liivsavimullad" ph_range "6.5-7.5" description "Hästi dreneeritud, kuivavad kiiremini" suitable_plants "Salatid, tomat"
+HSET soil:3 soil_type "Turvasmullad" ph_range "4.5-6.0" description "Happelised, orgaanilisest ainest rikkad" suitable_plants "Basiil, salatid"
+HSET soil:4 soil_type "Mullamullad" ph_range "6.0-7.5" description "Tasakaalustatud, hea struktuuri" suitable_plants "Kõik tööstatud taimed"
+
+# Kasvukeskkonnad
+HSET environment:1 user_id 1 soil_id 1 name "Sisekasvandus 1" created_at "2024-08-01 10:00:00"
+HSET environment:2 user_id 1 soil_id 2 name "Aed põhjaosas" created_at "2024-08-01 10:05:00"
+HSET environment:3 user_id 2 soil_id 3 name "Kasvuhoone" created_at "2024-08-01 10:10:00"
+HSET environment:4 user_id 3 soil_id 1 name "Lõunapoolne aken" created_at "2024-08-01 10:15:00"
+HSET environment:5 user_id 4 soil_id 4 name "Välipeenrad" created_at "2024-08-01 10:20:00"
+
+# Sensorite andmed
+HSET sensor:1 sensor_name "Temp_Sensor_1" sensor_type "Temperature" value 23.5 unit "°C" environment_id 1 timestamp "2024-08-01 08:00:00"
+HSET sensor:2 sensor_name "Humidity_Sensor_1" sensor_type "Humidity" value 65.2 unit "%" environment_id 1 timestamp "2024-08-01 08:00:00"
+HSET sensor:3 sensor_name "pH_Sensor_1" sensor_type "pH" value 6.8 unit "pH" environment_id 1 timestamp "2024-08-01 08:00:00"
+HSET sensor:4 sensor_name "Light_Sensor_1" sensor_type "Light" value 450.0 unit "lux" environment_id 1 timestamp "2024-08-01 08:00:00"
+HSET sensor:5 sensor_name "Temp_Sensor_2" sensor_type "Temperature" value 21.8 unit "°C" environment_id 2 timestamp "2024-08-01 08:00:00"
+HSET sensor:6 sensor_name "Humidity_Sensor_2" sensor_type "Humidity" value 58.7 unit "%" environment_id 2 timestamp "2024-08-01 08:00:00"
+HSET sensor:7 sensor_name "Temp_Sensor_3" sensor_type "Temperature" value 25.2 unit "°C" environment_id 3 timestamp "2024-08-01 08:00:00"
+HSET sensor:8 sensor_name "Humidity_Sensor_3" sensor_type "Humidity" value 72.1 unit "%" environment_id 3 timestamp "2024-08-01 08:00:00"
+
+# Aktuaatorite andmed
+HSET actuator:1 actuator_name "Water_Pump_1" state 1 environment_id 1 timestamp "2024-08-01 09:00:00"
+HSET actuator:2 actuator_name "LED_Light_1" state 1 environment_id 1 timestamp "2024-08-01 06:00:00"
+HSET actuator:3 actuator_name "Fan_1" state 0 environment_id 1 timestamp "2024-08-01 08:00:00"
+HSET actuator:4 actuator_name "Water_Pump_2" state 1 environment_id 2 timestamp "2024-08-01 10:00:00"
+HSET actuator:5 actuator_name "Heater_1" state 0 environment_id 2 timestamp "2024-08-01 08:00:00"
+HSET actuator:6 actuator_name "Water_Pump_3" state 1 environment_id 3 timestamp "2024-08-01 11:00:00"
+HSET actuator:7 actuator_name "LED_Light_3" state 1 environment_id 3 timestamp "2024-08-01 07:00:00"
+
+# Sidemed ja indeksid
+SADD user:1:plants 1 4 7
+SADD user:2:plants 2 5 10
+SADD user:3:plants 3 6 8
+
+# Linnade temperatuuride keskmised (cache)
+HSET city_avg_temp Tallinn 20.2
+HSET city_avg_temp Tartu 19.3
+HSET city_avg_temp Pärnu 21.25
+
+# Populaarsed taimed (cache)
+ZADD popular_plants 3 "Solanum lycopersicum" 3 "Ocimum basilicum" 2 "Lactuca sativa" 1 "Capsicum annuum"
+
+# Kasutajate aktiivsus (sessions)
+SET session:user:1 "active" EX 3600
+SET session:user:2 "active" EX 3600
+SET session:user:3 "inactive" EX 3600
+
+# Sensorite viimased väärtused (cache)
+HSET latest_sensor_values environment:1:temperature 23.5
+HSET latest_sensor_values environment:1:humidity 65.2
+HSET latest_sensor_values environment:2:temperature 21.8
+HSET latest_sensor_values environment:3:temperature 25.2
+
+# Aktuaatorite olekud (cache)
+HSET actuator_states Water_Pump_1 1
+HSET actuator_states LED_Light_1 1
+HSET actuator_states Fan_1 0
+HSET actuator_states Water_Pump_2 1

@@ -1,0 +1,151 @@
+# Redis päringud ja käsud
+
+# 1. Kõikide võtmete vaatamine
+KEYS *
+
+# 2. Kasutajate andmete vaatamine
+HGETALL user:1
+HGETALL user:2
+HGETALL user:3
+
+# 3. Taimede andmete vaatamine
+HGETALL plant:1
+HGETALL plant:2
+HGETALL plant:3
+HGETALL plant:4
+HGETALL plant:5
+
+# 4. Kasutaja taimede vaatamine
+HGETALL user_plant:1
+HGETALL user_plant:2
+HGETALL user_plant:3
+HGETALL user_plant:4
+HGETALL user_plant:5
+
+# 5. Ilmaandmete vaatamine
+HGETALL weather:1
+HGETALL weather:2
+HGETALL weather:3
+HGETALL weather:4
+HGETALL weather:5
+
+# 6. Mullatiipide vaatamine
+HGETALL soil:1
+HGETALL soil:2
+HGETALL soil:3
+HGETALL soil:4
+
+# 7. Kasvukeskkondade vaatamine
+HGETALL environment:1
+HGETALL environment:2
+HGETALL environment:3
+HGETALL environment:4
+HGETALL environment:5
+
+# 8. Sensorite andmete vaatamine
+HGETALL sensor:1
+HGETALL sensor:2
+HGETALL sensor:3
+HGETALL sensor:4
+HGETALL sensor:5
+
+# 9. Aktuaatorite andmete vaatamine
+HGETALL actuator:1
+HGETALL actuator:2
+HGETALL actuator:3
+HGETALL actuator:4
+HGETALL actuator:5
+
+# 10. Kasutaja taimede seoste vaatamine (SET andmestruktuur)
+SMEMBERS user:1:plants
+SMEMBERS user:2:plants
+SMEMBERS user:3:plants
+
+# 11. Linnade keskmiste temperatuuride vaatamine (HASH)
+HGETALL city_avg_temp
+HGET city_avg_temp Tallinn
+HGET city_avg_temp Tartu
+
+# 12. Populaarsete taimede vaatamine (SORTED SET)
+ZRANGE popular_plants 0 -1 WITHSCORES
+ZREVRANGE popular_plants 0 2 WITHSCORES
+
+# 13. Kasutajate sessiooni olekute vaatamine
+GET session:user:1
+GET session:user:2
+GET session:user:3
+
+# 14. Viimaste sensorite väärtuste vaatamine (cache)
+HGETALL latest_sensor_values
+HGET latest_sensor_values environment:1:temperature
+HGET latest_sensor_values environment:1:humidity
+
+# 15. Aktuaatorite olekute vaatamine (cache)
+HGETALL actuator_states
+HGET actuator_states Water_Pump_1
+HGET actuator_states LED_Light_1
+
+# 16. Konkreetse kasutaja kõikide andmete leidmine
+KEYS user:1*
+
+# 17. Kõikide sensorite võtmete leidmine
+KEYS sensor:*
+
+# 18. Kõikide aktuaatorite võtmete leidmine
+KEYS actuator:*
+
+# 19. Kõikide ilmaandmete võtmete leidmine
+KEYS weather:*
+
+# 20. Andmete tüüpide kontroll
+TYPE user:1
+TYPE user:1:plants
+TYPE popular_plants
+TYPE session:user:1
+TYPE city_avg_temp
+
+# 21. Võtmete aegumise kontroll
+TTL session:user:1
+TTL session:user:2
+
+# 22. Andmebaasi statistika
+INFO keyspace
+DBSIZE
+
+# 23. Mälu kasutuse statistika
+INFO memory
+
+# 24. Konkreetsete väljade saamine hashidest
+HMGET user:1 username email created_at
+HMGET plant:1 plant_cultivar plant_species
+HMGET weather:1 location temperature humidity
+
+# 25. Mitme võtme korraga saamine
+MGET session:user:1 session:user:2 session:user:3
+
+# 26. Sorted set operatsioonid - kõige populaarsemad taimed
+ZCARD popular_plants
+ZSCORE popular_plants "Solanum lycopersicum"
+ZRANK popular_plants "Ocimum basilicum"
+
+# 27. Set operatsioonid - kasutajate taimede ühisosa
+SINTER user:1:plants user:2:plants
+SUNION user:1:plants user:2:plants user:3:plants
+SDIFF user:1:plants user:2:plants
+
+# 28. Hash väljade arv
+HLEN user:1
+HLEN plant:1
+HLEN environment:1
+
+# 29. Kas võti eksisteerib
+EXISTS user:1
+EXISTS user:10
+EXISTS nonexistent_key
+
+# 30. Kõikide kasutajate nimed
+HGET user:1 username
+HGET user:2 username
+HGET user:3 username
+HGET user:4 username
+HGET user:5 username
